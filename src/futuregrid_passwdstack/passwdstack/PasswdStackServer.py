@@ -187,7 +187,7 @@ class PasswdStackServer(object):
         p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
         std = p.communicate()
         if p.returncode != 0:
-            status = "ERROR: getting user information"
+            status = "ERROR: getting user information. " + std[1]
             self.logger.error(status)
             leave=True
         else:
@@ -200,7 +200,7 @@ class PasswdStackServer(object):
             p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
             std = p.communicate()
             if p.returncode != 0:
-                status = "ERROR: updating user password"
+                status = "ERROR: updating user password. " + std[1]
                 self.logger.error(status)
             else:
                 status = "OK"
