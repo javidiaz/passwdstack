@@ -183,10 +183,12 @@ class PasswdStackServer(object):
                     self.errormsg(channel, msg)
                     return
         
-        cmd = "keystone user-list | awk /"+self.user+"/'{print $2 \"-\" $8}'"
+        cmd = "keystone user-list"
         p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
-        std = p.communicate()
-        if p.returncode != 0:
+        cmd1 = "awk /"+self.user+"/'{print $2 \"-\" $8}'"
+        p1 = Popen(cmd.split(), stdin=p.stdout, stdout=PIPE, stderr=PIPE)
+        std = p1.communicate()
+        if p1.returncode != 0:
             status = "ERROR: getting user information. " + std[1]
             self.logger.error(status)
             leave=True
