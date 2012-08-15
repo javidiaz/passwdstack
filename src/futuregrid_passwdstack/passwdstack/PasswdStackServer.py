@@ -183,6 +183,8 @@ class PasswdStackServer(object):
                     self.errormsg(channel, msg)
                     return
         
+        self.logger.info('Reseting the password of the user: ' + self.user)
+        
         leave=True
         cmd = "keystone user-list"
         p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
