@@ -183,21 +183,29 @@ class PasswdStackServer(object):
                     self.errormsg(channel, msg)
                     return
         
+        leave=True
         cmd = "keystone user-list"
         p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
         std = p.communicate()
         if p.returncode != 0:
             status = "ERROR: getting user information. " + std[1]
             self.logger.error(status)
-            leave=True
         else:
-            
+            status = "ERROR: User not found."
             for i in std[0].split("\n"):
-                if not re.search("^+",i):
+                if not re.search("^\+",i) and i.strip() != "":
+                    i="".join(i.split()).strip()
                     parts=i.split("|")
-                    if re.search("^javi$",parts[3].strip()):
-                        print i.split("|")[0] +"-"+i.split("|")[3]
-                        useridOS = i.split("|")[0]
+                    if parts[0]=="":
+                        add=1
+                    else:
+                        add=0
+                    print parts
+                    if re.search("^javi$",parts[3+add].strip()):
+                        print parts[0+add] +"-"+ parts[3+add]
+                        useridOS = parts[0+add]
+                        leave = False
+                        status = "OK"
                         break            
             
         if not leave:
