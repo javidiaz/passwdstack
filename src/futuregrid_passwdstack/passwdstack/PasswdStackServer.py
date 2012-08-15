@@ -200,9 +200,7 @@ class PasswdStackServer(object):
                         add=1
                     else:
                         add=0
-                    print parts
                     if re.search("^javi$",parts[3+add].strip()):
-                        print parts[0+add] +"-"+ parts[3+add]
                         useridOS = parts[0+add]
                         leave = False
                         status = "OK"
