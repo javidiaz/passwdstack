@@ -185,18 +185,21 @@ class PasswdStackServer(object):
         
         cmd = "keystone user-list"
         p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
-        cmd1 = "awk /"+self.user+"/'{print $2 \"-\" $8}'"
-        p1 = Popen(cmd.split(), stdin=p.stdout, stdout=PIPE, stderr=PIPE)
-        std = p1.communicate()
-        if p1.returncode != 0:
+        std = p.communicate()
+        if p.returncode != 0:
             status = "ERROR: getting user information. " + std[1]
             self.logger.error(status)
             leave=True
         else:
-            for i in std[0]:
-                if re.search("^"+self.user+"$",i.split("-")[1]):
-                    useridOS = i.split("-")[0]
-                    break
+            
+            for i in std[0].split("\n"):
+                if not re.search("^+",i):
+                    parts=i.split("|")
+                    if re.search("^javi$",parts[3].strip()):
+                        print i.split("|")[0] +"-"+i.split("|")[3]
+                        useridOS = i.split("|")[0]
+                        break            
+            
         if not leave:
             cmd = "keystone user-password-update --pass " + dashboardpasswd + " " + useridOS
             p = Popen(cmd.split(), stdout=PIPE, stderr=PIPE)
