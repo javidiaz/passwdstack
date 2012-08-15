@@ -47,7 +47,7 @@ setup(
         ('/etc/futuregrid', ['etc/fg-server.conf-sample_move', 'etc/fg-client.conf-sample_move'])
         ],
     scripts = [
-        'src/futuregrid_passwdstack/passwdstack/RainMoveServer.py',
+        'src/futuregrid_passwdstack/passwdstack/PasswdStackServer.py',
         'src/futuregrid_passwdstack/passwdstack/fg-passwdstack',
         ],
     install_requires = ['setuptools','argparse', 'python-ldap'],
