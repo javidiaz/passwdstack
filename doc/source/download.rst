@@ -5,13 +5,13 @@
 Download
 ========
 
-The latest version of the FutureGrid Move is |release|
+The latest version of the FutureGrid PasswdStack is |release|
 
 The recommended way of installing Move is using ``easy_install``. You can find instructions on how to do this in the
 :ref:`Installation <chap_install_futuregrid>` chapter of the documentation.
 
 If you do need to download FG Move as an installable Python Egg or as a source
-tarball, both are available for download in the Python Package Index: http://pypi.python.org/pypi/futuregrid_move
+tarball, both are available for download in the Python Package Index: http://pypi.python.org/pypi/futuregrid_passwdstack
 
 Sample files
 ------------
@@ -23,7 +23,7 @@ Development version
 -------------------
 
 If you want to use the latest development version of FG Move, you can
-track our `GitHub repository <https://github.com/futuregrid/rain-move>`_.
+track our `GitHub repository <https://github.com/javidiaz/passwdstack>`_.
 
 The :ref:`Installation <chap_install_futuregrid>` chapter of the documentation provides
 instructions on how to check out our code from GitHub.

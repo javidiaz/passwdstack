@@ -39,11 +39,11 @@ the OpenStack Dashboard. This password is asked two times to make sure you do no
 
          Passwd Stack client...
          Please insert the password for the user jdiaz
-         Enter Portal Password: 
+         Enter Portal Password:
          
          Please insert the password you want to have in the OpenStack dashboard
-         Enter new Dashboard password: 
-         Retype new Dashboard password: 
+         Enter new Dashboard password:
+         Retype new Dashboard password:
          The strength of the password is: Weak
          Connecting server: 172.29.200.121:56761
          Your request is in the queue to be processed after authentication

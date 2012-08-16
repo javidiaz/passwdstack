@@ -125,7 +125,7 @@ If you want to use the latest version of our code from our GitHub repository, th
 are similar to installing a source tarball. However, instead of downloading a tarball, you
 will use git to clone our repository on your machine. Simply run the following::
 
-   git clone git@github.com:futuregrid/passwdstack.git
+   git clone git@github.com:javidiaz/passwdstack.git
    
 This will create a directory called ``passwdstack``. In it, you will find the same ``setup.py``
 script described in the previous section. If you want to install FutureGrid PasswdStack, and not
