@@ -28,7 +28,7 @@ setup(
     author = 'Javier Diaz, Fugang Wang, Koji Tanaka, Gregor von Laszewski',
     author_email = 'javier.diazmontes@gmail.com',
     license = "Apache Software License",
-    url = "http://futuregrid.github.com/passwdstack/index.html",
+    url = "http://javidiaz.github.com/passwdstack/index.html",
     classifiers = [
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",

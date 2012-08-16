@@ -12,7 +12,7 @@
 # serve to show the default.
 
 import sys, os
-import futuregrid_move
+import futuregrid_passwdstack
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -37,9 +37,9 @@ def setup(app):
 
 website = "no"
 
-extlinks = {'docs-zip': ('futuregrid-docs-%s_' + futuregrid_move.RELEASE+ '.zip', None),
-            'docs-tar': ('futuregrid-docs-%s_' + futuregrid_move.RELEASE+ '.tar.gz', None),
-            'docs-pdf': ('futuregrid-docs-%s_' + futuregrid_move.RELEASE+ '.pdf', None),
+extlinks = {'docs-zip': ('futuregrid-docs-%s_' + futuregrid_passwdstack.RELEASE+ '.zip', None),
+            'docs-tar': ('futuregrid-docs-%s_' + futuregrid_passwdstack.RELEASE+ '.tar.gz', None),
+            'docs-pdf': ('futuregrid-docs-%s_' + futuregrid_passwdstack.RELEASE+ '.pdf', None),
             }
 
 # Add any paths that contain templates here, relative to this directory.
