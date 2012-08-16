@@ -1,111 +1,45 @@
-egg:
-	python setup.py bdist_egg
+VERSION = `python -c "import futuregrid_passwdstack; print futuregrid_passwdstack.RELEASE"`
 
-tar:
-	python setup.py sdist
-
-upload:
-	python setup.py bdist_egg upload
-	python setup.py sdist upload
-
-register:
-	python setup.py register
-
-######################################################################
-# GIT INTERFACES
-######################################################################
-push:
-	make -f Makefile clean
-	git commit -a 
+all:
+	make clean
+	cd /tmp
+	rm -rf /tmp/vc
+	mkdir -p /tmp/vc
+	cd /tmp/vc; git clone git://github.com/javidiaz/passwdstack.git
+	cd /tmp/vc/passwdstack/doc; ls; make website
+	cp -r /tmp/vc/passwdstack/doc/build/web-${VERSION}/* .
+	find . -name "*.pyc" -exec rm {} \;
+	git add .
+	git reset -- doc
+	git reset -- src
+	git reset -- .project .pydevproject .settings
+	git commit -a -m "updating the github pages"
+#	git commit -a _sources
+#	git commit -a _static
 	git push
-
-pull:
-	git pull 
-
-gregor:
-	git config --global user.name "Gregor von Laszewski"
-	git config --global user.email laszewski@gmail.com
-
-######################################################################
-# INSTALLATION
-######################################################################
-dist:
-	make -f Makefile pip
-
-pip:
-	make -f Makefile clean
-	python setup.py sdist
-
-
-force:
-	make -f Makefile pip
-	sudo pip install -U dist/*.tar.gz
-
-install:
-	sudo pip install dist/*.tar.gz
-
-test:
-	make -f Makefile clean	
-	make -f Makefile distall
-	sudo pip install --upgrade dist/*.tar.gz
-	fg-cluster
-	fg-local
-
-######################################################################
-# QC
-######################################################################
-
-qc-install:
-	sudo pip install pep8
-	sudo pip install pylint
-	sudo pip install pyflakes
-
-qc:
-	pep8 ./src/futuregrid/rain/move/
-	pylint ./src/futuregrid/rain/move/ | less
-	pyflakes ./src/futuregrid/rain/move/
-
-# #####################################################################
-# CLEAN
-# #####################################################################
-
-
+	git checkout master
+	rm -rf /tmp/vc
+all-devmode:
+	make clean
+	cd /tmp
+	rm -rf /tmp/vc
+	mkdir -p /tmp/vc
+	cd /tmp/vc; git clone git://github.com/javidiaz/passwdstack.git
+	git checkout master
+	cd /tmp/vc/passwdstack/doc; ls; make website
+	git checkout gh-pages
+	cp -r /tmp/vc/passwdstack/doc/build/web-${VERSION}/* .
+	find . -name "*.pyc" -exec rm {} \;
+	git add .
+	git reset -- doc
+	git reset -- src
+	git reset -- .project .pydevproject .settings
+	git commit -a -m "updating the github pages"
+	git push
+	git checkout master
+	rm -rf /tmp/vc
 clean:
 	find . -name "*~" -exec rm {} \;  
 	find . -name "*.pyc" -exec rm {} \;  
 	rm -rf build dist *.egg-info *~ #*
-	cd doc; make clean
 	rm -f distribute*.gz distribute*.egg 
-	rm -rf src/futuregrid.egg-info
-	rm -f PKG-INFO
-
-
-######################################################################
-# pypi
-######################################################################
-
-pip-register:
-	python setup.py register
-
-pip-upload:
-	make -f Makefile pip
-	python setup.py sdist upload
-
-#############################################################################
-# SPHINX DOC
-###############################################################################
-
-sphinx:
-	cd doc; make html
-
-#############################################################################
-# PUBLISH GIT HUB PAGES
-###############################################################################
-
-gh-pages: clean
-	git checkout gh-pages
-	make
-
-gh-pages-devmode:
-	git checkout gh-pages
-	make all-devmode
