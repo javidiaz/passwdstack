@@ -22,7 +22,7 @@ sys.path.insert(0, './src')
 from futuregrid_move import RELEASE
 
 setup(
-    name = 'passwdstack',
+    name = 'futuregrid_passwdstack',
     version = RELEASE,
     description = "Password Stack is a simple tool that allows normal users to reset their own password in the OpenStack Dashboard",
     author = 'Javier Diaz, Fugang Wang, Koji Tanaka, Gregor von Laszewski',
