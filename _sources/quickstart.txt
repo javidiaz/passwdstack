@@ -4,7 +4,7 @@ FG PasswdStack QuickStart
 =========================
 
 
-At this moment, our software only provides a command line interface. Thus, users need access to the machine where the FG Move client 
+At this moment, our software only provides a command line interface. Thus, users need access to the machine where the FG PasswdClient client 
 is installed. Currently, this is installed and configured in the FutureGrid India cluster (``india.futuregrid.org``). 
   
 Login on India and use the module functionality to load the environment variables:
