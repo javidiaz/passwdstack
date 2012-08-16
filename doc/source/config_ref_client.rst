@@ -3,12 +3,12 @@
 ``fg-client.conf`` configuration file
 -------------------------------------
 
-.. _fg-client_move:
+.. _fg-client_passwdstack:
 
-Section ``[RainMove]``
-**********************
+Section ``[PasswdStack]``
+*************************
 
-This section is used to configure FG Move.
+This section is used to configure FG PasswdStack.
 
 Option ``port``
 ~~~~~~~~~~~~~~~
@@ -17,7 +17,7 @@ Option ``port``
 
 **Required:** Yes
 
-Port where the FG Move server will be listening.
+Port where the FG PasswdStack server will be listening.
 
 Option ``serveraddr``
 ~~~~~~~~~~~~~~~~~~~~~
@@ -26,7 +26,7 @@ Option ``serveraddr``
 
 **Required:** Yes
 
-Address of the machine where the FG Move server is running.
+Address of the machine where the FG PasswdStack server is running.
 
 Option ``log``
 ~~~~~~~~~~~~~~
@@ -63,7 +63,7 @@ Option ``certfile``
 
 **Required:** Yes
 
-Location of the certificate (PEM-encoded) used by the FG Move client.
+Location of the certificate (PEM-encoded) used by the FG PasswdStack client.
 
 Option ``keyfile``
 ~~~~~~~~~~~~~~~~~~

@@ -1,7 +1,7 @@
 .. _documentation:
 
-FG Move Documentation
-=====================
+FG PasswdStack Documentation
+============================
 
 .. ifconfig:: website == "yes"
 
@@ -20,7 +20,7 @@ In this section you will find information on how to use the command line interfa
 .. toctree::
     :maxdepth: 1
     
-    man-move
+    man-passwdstack
         
 
 .. note::

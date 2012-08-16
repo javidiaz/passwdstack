@@ -1,12 +1,13 @@
-Welcome to FuturGrid Password Stack
-===================================
-Password Stack is a simple tool that allows normal users to reset their own password in the OpenStack Dashboard (web interface)
+Welcome to FuturGrid PasswdStack
+================================
+PasswdStack is a simple tool that allows normal users to reset their own password in the OpenStack Dashboard. Currently, OpenStack does
+not allow normal users to change their own password in the dashboard. This tool tackles this problem. The security is done via LDAP in the server
+side, which guarantees that an user can only change its own password. 
 
 .. toctree::
     :maxdepth: 1
     :hidden:
     
-..    whatis
     quickstart
     documentation
     download

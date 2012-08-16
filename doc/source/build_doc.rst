@@ -1,7 +1,7 @@
 .. _build_doc:
 
-Building the FG Move Documentation
-==================================
+Building the FG PasswdStack Documentation
+=========================================
 
 The documentation has been created using `Sphinx <http://sphinx.pocoo.org/>`_ and therefore you have to build it before you can see the final html files. The source
 files of the documentation can be found under the ``doc`` directory of our software package. Next, we define the needed steps to build the documentation.

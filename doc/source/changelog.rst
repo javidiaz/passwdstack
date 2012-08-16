@@ -10,7 +10,5 @@ Summary of the main functionality provided for this version:
 
 * Security
    * Authentication is performed using the FutureGrid LDAP server
-* Move
-   * Manage Clusters, Nodes and Services via command line interface
-   * Move resources from/to HPC, Eucalytpus and OpenStack
+* Change the OpenStack password for an user by executing the command keystone user-password-update
 

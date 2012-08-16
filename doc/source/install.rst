@@ -2,23 +2,23 @@
 
 .. Most of the text found in this page has been taken from http://globus.org/provision/
 
-Installing FutureGrid Move
-**************************
+Installing FutureGrid PasswdStack
+*********************************
 
 .. highlight:: bash
 
-You can install the FutureGrid Move using one of the following procedures.
+You can install the FutureGrid PasswdStack using one of the following procedures.
 
 * :ref:`Using the "easy_install" tool <easy_install>`. This is the simplest option, as ``easy_install``
-  will take care of downloading and installing not just FutureGrid Move but also its dependencies.
+  will take care of downloading and installing not just FutureGrid PasswdStack but also its dependencies.
   You must already have `Python <http://www.python.org/>`_ (version 2.6 or higher) and 
   `Python Distribute <http://packages.python.org/distribute/>`_ (version 0.6.15 or higher)
   installed on your machine (or you must be able to install them). To check if both are installed,
   try running ``easy_install --version`` from the command line. If the command is available, and it
-  prints out a version number equal or higher than 0.6.15, you will be able to install FutureGrid Move 
+  prints out a version number equal or higher than 0.6.15, you will be able to install FutureGrid PasswdStack 
   using ``easy_install``.
-* :ref:`Using a source tarball <source_tarball>`. If you are unable to install FutureGrid Move using
-  ``easy_install``, you can download a tarball with the FutureGrid Move source code. Your machine must
+* :ref:`Using a source tarball <source_tarball>`. If you are unable to install FutureGrid PasswdStack using
+  ``easy_install``, you can download a tarball with the FutureGrid PasswdStack source code. Your machine must
   have Python installed on it, but not the Python Distribute package (the tarball includes a setup
   script that will automatically download and install Python Distribute for you).
 * :ref:`Downloading the latest code from GitHub <github_install>`. Choose this option if you want to track 
@@ -45,21 +45,21 @@ This option has the following prerequisites:
   in Debian and Ubuntu systems), since Python Distribute is a fork of the Setuptools project.
 
 If you meet these prerequisites, you should be able to
-install FutureGrid Move simply by running this as ``root``::
+install FutureGrid PasswdStack simply by running this as ``root``::
 
-   easy_install -U futuregrid_move
+   easy_install -U futuregrid_passwdstack
    
 If you are using Ubuntu or Mac OS X, you will likely just need to run this::
    
-   sudo easy_install -U futuregrid_move
+   sudo easy_install -U futuregrid_passwdstack
       
-If you do not have administrative privileges on your machine, you will have to install FutureGrid Move
+If you do not have administrative privileges on your machine, you will have to install FutureGrid PasswdStack
 under your regular user account::
 
-   easy_install -U futuregrid_move --user
+   easy_install -U futuregrid_passwdstack --user
    
 .. note::
-   Installing FutureGrid Move in your home directory will install the FutureGrid Move commands
+   Installing FutureGrid PasswdStack in your home directory will install the FutureGrid PasswdStack commands
    in ``~/.local/bin``, which may not be in your PATH environment variable. If not, make sure to
    update the definition of your PATH environment variable (e.g., in the ``~/.profile`` file if
    you are using a BASH shell).
@@ -70,7 +70,7 @@ under your regular user account::
    
    :: 
 
-      easy_install -U futuregrid_move  --user -s ~/bin/
+      easy_install -U futuregrid_passwdstack  --user -s ~/bin/
    
 
 Using ``pip``
@@ -80,7 +80,7 @@ Using ``pip``
 
    ::
      
-     pip install futuregrid_move
+     pip install futuregrid_passwdstack
 
  
 .. _source_tarball:
@@ -88,19 +88,19 @@ Using ``pip``
 Using a source tarball
 ======================
 
-If you do not have Python Distribute, or are unable to install it, you can still install FutureGrid Move
+If you do not have Python Distribute, or are unable to install it, you can still install FutureGrid PasswdStack
 by downloading a source tarball yourself. This tarball contains an installation script
-that will install and setup Python Distribute, and then proceed to install FutureGrid Move.
+that will install and setup Python Distribute, and then proceed to install FutureGrid PasswdStack.
 
 You will first have to download the latest source tarball from the Python Package Index: 
-http://pypi.python.org/pypi/futuregrid_move 
+http://pypi.python.org/pypi/futuregrid_passwdstack
 
 Next, untar the tarball and run the installation script as ``root``:
 
 .. parsed-literal::
 
-   tar xvzf futuregrid_move-|release|.tar.gz
-   cd futuregrid_move-|release|
+   tar xvzf futuregrid_passwdstack-|release|.tar.gz
+   cd futuregrid_passwdstack-|release|
    python setup.py install
    
 .. note::
@@ -125,23 +125,23 @@ If you want to use the latest version of our code from our GitHub repository, th
 are similar to installing a source tarball. However, instead of downloading a tarball, you
 will use git to clone our repository on your machine. Simply run the following::
 
-   git clone git@github.com:futuregrid/rain-move.git
+   git clone git@github.com:futuregrid/passwdstack.git
    
-This will create a directory called ``rain-move``. In it, you will find the same ``setup.py``
-script described in the previous section. If you want to install FutureGrid Move, and not
+This will create a directory called ``passwdstack``. In it, you will find the same ``setup.py``
+script described in the previous section. If you want to install FutureGrid PasswdStack, and not
 make any modifications to the code, you should run ``python setup.py install`` as described
 in the previous section.
 
-If you intend to modify the code, and want the FutureGrid Move commands to use the code
+If you intend to modify the code, and want the FutureGrid PasswdStack commands to use the code
 in the git repository you've created on your machine, you can instead install FutureGrid
-Move in "developer" mode::
+PasswdStack in "developer" mode::
 
    python setup.py develop
 
-This will install FutureGrid Move but, instead of copying the Python source code
+This will install FutureGrid PasswdStack but, instead of copying the Python source code
 to a system directory, it will create a pointer to the source directory you checked out.
 That way, any changes you make to the source code will take effect immediately
-(without having to reinstall FutureGrid Move).
+(without having to reinstall FutureGrid PasswdStack).
 
 Take into account that there are, at least, two branches in our GitHub repository: ``master``
 and ``dev``. The former always contains the latest stable release, including bug fixes, and

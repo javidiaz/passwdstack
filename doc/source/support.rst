@@ -3,7 +3,7 @@
 Support
 =======
 
-If you run into problems when using FutureGrid Move, please use our 
+If you run into problems when using FutureGrid PasswordStack, please use our 
 help form at `https://portal.futuregrid.org/help <https://portal.futuregrid.org/help>`_
 
 
