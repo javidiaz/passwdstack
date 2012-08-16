@@ -1,0 +1,207 @@
+
+<!-- This layout has been taken from http://globus.org/provision/ -->
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PasswdStack (fg-passwdstack) &mdash; FutureGrid 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="FutureGrid 0.1 documentation" href="index.html" />
+    <link rel="up" title="FG PasswdStack Documentation" href="documentation.html" />
+    <link rel="next" title="Installing FutureGrid PasswdStack" href="install.html" />
+    <link rel="prev" title="FG PasswdStack Documentation" href="documentation.html" /> 
+  </head>
+  <body>
+<style>
+.header {
+        background-image: url(_static/move_header_bg.png);
+        background-color: #122A75;
+        text-align: left;
+}
+body {
+        background-image: url(_static/move_body_bg.png);
+        background-color: #E5D5AF;
+}
+</style>
+<div class="header">
+<table>
+  <tr>
+    <td>
+      <a href="index.html"><img src="_static/logo_grid_y.png" border="0" alt="FutureGrid Move"/></a>
+    </td>
+    <td>
+      <font size="6" color="white"><b><i>FutureGrid</i></b></font><br><br>
+      <font size="10" color="white" face="Comic Sans MS"><b><i>PasswdStack</i></b></font><br>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installing FutureGrid PasswdStack"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="documentation.html" title="FG PasswdStack Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Home</a>|&nbsp;</li>
+        <li><a href="quickstart.html">Quickstart</a>|&nbsp;</li>
+        <li><a href="documentation.html">Documentation</a>|&nbsp;</li>
+        <li><a href="download.html">Download</a>|&nbsp;</li>
+        <li><a href="support.html">Support</a>|&nbsp;</li>
+        <li><a href="http://futuregrid.github.com/doc/">Dev</a>|&nbsp;</li>
+        <li><a href="https://portal.futuregrid.org/">Portal</a>|&nbsp;</li>
+
+          <li><a href="documentation.html" accesskey="U">FG PasswdStack Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PasswdStack (fg-passwdstack)</a><ul>
+<li><a class="reference internal" href="#general-usage">General Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="documentation.html"
+                        title="previous chapter">FG PasswdStack Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="next chapter">Installing FutureGrid PasswdStack</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/man-passwdstack.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+<body></body>
+
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="passwdstack-fg-passwdstack">
+<span id="man-passwdstack"></span><h1>PasswdStack (fg-passwdstack)<a class="headerlink" href="#passwdstack-fg-passwdstack" title="Permalink to this headline">¶</a></h1>
+<p>FG PasswdStack is a service to reset the OpenStack dashboard password.</p>
+<div class="section" id="general-usage">
+<h2>General Usage<a class="headerlink" href="#general-usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>usage: fg-passwdstack [-h] -u user</pre>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Option</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-h/--help</span></tt></td>
+<td>Shows help information and exit.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-u/--user</span> <span class="pre">&lt;userName&gt;</span></tt></td>
+<td>FutureGrid HPC user name, that is, the one used to login into the FG resources.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33833781-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installing FutureGrid PasswdStack"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="documentation.html" title="FG PasswdStack Documentation"
+             >previous</a> |</li>
+        <li><a href="index.html">Home</a>|&nbsp;</li>
+        <li><a href="quickstart.html">Quickstart</a>|&nbsp;</li>
+        <li><a href="documentation.html">Documentation</a>|&nbsp;</li>
+        <li><a href="download.html">Download</a>|&nbsp;</li>
+        <li><a href="support.html">Support</a>|&nbsp;</li>
+        <li><a href="http://futuregrid.github.com/doc/">Dev</a>|&nbsp;</li>
+        <li><a href="https://portal.futuregrid.org/">Portal</a>|&nbsp;</li>
+
+          <li><a href="documentation.html" >FG PasswdStack Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Javier Diaz, Fugang Wang, Koji Tanaka, Gregor von Laszewski.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

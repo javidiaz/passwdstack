@@ -1,0 +1,807 @@
+
+<!-- This layout has been taken from http://globus.org/provision/ -->
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FutureGrid 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="None" href="index.html#document-index" /> 
+  </head>
+  <body>
+<style>
+.header {
+        background-image: url(_static/move_header_bg.png);
+        background-color: #122A75;
+        text-align: left;
+}
+body {
+        background-image: url(_static/move_body_bg.png);
+        background-color: #E5D5AF;
+}
+</style>
+<div class="header">
+<table>
+  <tr>
+    <td>
+      <a href="index.html#document-index"><img src="_static/logo_grid_y.png" border="0" alt="FutureGrid Move"/></a>
+    </td>
+    <td>
+      <font size="6" color="white"><b><i>FutureGrid</i></b></font><br><br>
+      <font size="10" color="white" face="Comic Sans MS"><b><i>PasswdStack</i></b></font><br>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html#document-index">Home</a>|&nbsp;</li>
+        <li><a href="index.html#document-quickstart">Quickstart</a>|&nbsp;</li>
+        <li><a href="index.html#document-documentation">Documentation</a>|&nbsp;</li>
+        <li><a href="index.html#document-download">Download</a>|&nbsp;</li>
+        <li><a href="index.html#document-support">Support</a>|&nbsp;</li>
+        <li><a href="http://futuregrid.github.com/doc/">Dev</a>|&nbsp;</li>
+        <li><a href="https://portal.futuregrid.org/">Portal</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html#document-index">Table Of Contents</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-quickstart">FG PasswdStack QuickStart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-documentation">FG PasswdStack Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-download">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-support">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#known-problems">Known problems</a></li>
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+<body></body>
+
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="welcome-to-futurgrid-passwdstack">
+<h1>Welcome to FuturGrid PasswdStack<a class="headerlink" href="#welcome-to-futurgrid-passwdstack" title="Permalink to this headline">¶</a></h1>
+<p>PasswdStack is a simple tool that allows normal users to reset their own password in the OpenStack Dashboard. Currently, OpenStack does
+not allow normal users to change their own password in the dashboard. This tool tackles this problem. The security is done via LDAP in the server
+side, which guarantees that an user can only change its own password.</p>
+<div class="toctree-wrapper compound">
+<span id="document-quickstart"></span><div class="section" id="fg-passwdstack-quickstart">
+<span id="quickstart"></span><h2>FG PasswdStack QuickStart<a class="headerlink" href="#fg-passwdstack-quickstart" title="Permalink to this headline">¶</a></h2>
+<p>At this moment, our software only provides a command line interface. Thus, users need access to the machine where the FG Move client
+is installed. Currently, this is installed and configured in the FutureGrid India cluster (<tt class="docutils literal"><span class="pre">india.futuregrid.org</span></tt>).</p>
+<p>Login on India and use the module functionality to load the environment variables:</p>
+<blockquote>
+<div><div class="highlight-python"><pre>$ ssh &lt;username&gt;@india.futuregrid.org
+$ module load futuregrid</pre>
+</div>
+</div></blockquote>
+<p>The authentication is done via FutureGrid Ldap server. Thus, in each command we need to specify our FutureGrid username and we
+will be asked for our portal password.</p>
+<div class="section" id="using-fg-passwdstack">
+<h3>Using FG PasswdStack<a class="headerlink" href="#using-fg-passwdstack" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><div class="highlight-python"><pre>$ fg-passwdstack -u &lt;username&gt;</pre>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Users need to use their FutureGrid username and portal password.</p>
+</div>
+<p>After typing the command, you will be asked for your portal password. Then, you will be asked for the password that you want to have in
+the OpenStack Dashboard. This password is asked two times to make sure you do not misspell the new password.</p>
+<blockquote>
+<div><div class="highlight-python"><pre>Output:
+
+    Passwd Stack client...
+    Please insert the password for the user jdiaz
+    Enter Portal Password:
+
+    Please insert the password you want to have in the OpenStack dashboard
+    Enter new Dashboard password:
+    Retype new Dashboard password:
+    The strength of the password is: Weak
+    Connecting server: 172.29.200.121:56761
+    Your request is in the queue to be processed after authentication
+    Authentication OK. Your image request is being processed
+    The password was reset: OK</pre>
+</div>
+</div></blockquote>
+</div>
+</div>
+<span id="document-documentation"></span><div class="section" id="fg-passwdstack-documentation">
+<span id="documentation"></span><h2>FG PasswdStack Documentation<a class="headerlink" href="#fg-passwdstack-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="user-documentation">
+<h3>User Documentation<a class="headerlink" href="#user-documentation" title="Permalink to this headline">¶</a></h3>
+<p>In this section you will find information on how to use the command line interfaces of our tools.</p>
+<div class="toctree-wrapper compound">
+<span id="document-man-passwdstack"></span><div class="section" id="passwdstack-fg-passwdstack">
+<span id="man-passwdstack"></span><h4>PasswdStack (fg-passwdstack)<a class="headerlink" href="#passwdstack-fg-passwdstack" title="Permalink to this headline">¶</a></h4>
+<p>FG PasswdStack is a service to reset the OpenStack dashboard password.</p>
+<div class="section" id="general-usage">
+<h5>General Usage<a class="headerlink" href="#general-usage" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python"><pre>usage: fg-passwdstack [-h] -u user</pre>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Option</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">-h/--help</span></tt></td>
+<td>Shows help information and exit.</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">-u/--user</span> <span class="pre">&lt;userName&gt;</span></tt></td>
+<td>FutureGrid HPC user name, that is, the one used to login into the FG resources.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These tools require users to authenticate using their FG usernames and FG portal passwords.</p>
+</div>
+</div>
+<div class="section" id="administrator-documentation">
+<h3>Administrator Documentation<a class="headerlink" href="#administrator-documentation" title="Permalink to this headline">¶</a></h3>
+<p>In this section you will find information on software deployment details.</p>
+<div class="toctree-wrapper compound">
+<span id="document-install"></span><span class="target" id="chap-install-futuregrid"></span><div class="section" id="installing-futuregrid-passwdstack">
+<h4>Installing FutureGrid PasswdStack<a class="headerlink" href="#installing-futuregrid-passwdstack" title="Permalink to this headline">¶</a></h4>
+<p>You can install the FutureGrid PasswdStack using one of the following procedures.</p>
+<ul class="simple">
+<li><a class="reference internal" href="index.html#easy-install"><em>Using the &#8220;easy_install&#8221; tool</em></a>. This is the simplest option, as <tt class="docutils literal"><span class="pre">easy_install</span></tt>
+will take care of downloading and installing not just FutureGrid PasswdStack but also its dependencies.
+You must already have <a class="reference external" href="http://www.python.org/">Python</a> (version 2.6 or higher) and
+<a class="reference external" href="http://packages.python.org/distribute/">Python Distribute</a> (version 0.6.15 or higher)
+installed on your machine (or you must be able to install them). To check if both are installed,
+try running <tt class="docutils literal"><span class="pre">easy_install</span> <span class="pre">--version</span></tt> from the command line. If the command is available, and it
+prints out a version number equal or higher than 0.6.15, you will be able to install FutureGrid PasswdStack
+using <tt class="docutils literal"><span class="pre">easy_install</span></tt>.</li>
+<li><a class="reference internal" href="index.html#source-tarball"><em>Using a source tarball</em></a>. If you are unable to install FutureGrid PasswdStack using
+<tt class="docutils literal"><span class="pre">easy_install</span></tt>, you can download a tarball with the FutureGrid PasswdStack source code. Your machine must
+have Python installed on it, but not the Python Distribute package (the tarball includes a setup
+script that will automatically download and install Python Distribute for you).</li>
+<li><a class="reference internal" href="index.html#github-install"><em>Downloading the latest code from GitHub</em></a>. Choose this option if you want to track
+the latest code in our GitHub repository,</li>
+</ul>
+<div class="section" id="using-easy-install">
+<span id="easy-install"></span><h5>Using <tt class="docutils literal"><span class="pre">easy_install</span></tt><a class="headerlink" href="#using-easy-install" title="Permalink to this headline">¶</a></h5>
+<p>This option has the following prerequisites:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.python.org/">Python</a> 2.6 or higher. If Python is not available on your machine,
+you can find installation instructions here: <a class="reference external" href="http://www.python.org/getit/">http://www.python.org/getit/</a>. Take into account that,
+if you are using a Linux distribution, you should be able to install it using your distribution&#8217;s
+package manager (e.g., <tt class="docutils literal"><span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python</span></tt> on Debian and Ubuntu). If you are using a Mac,
+Python is included by default; however, if your version is too old, take a look at the following
+instructions: <a class="reference external" href="http://www.python.org/getit/mac/">http://www.python.org/getit/mac/</a></li>
+<li><a class="reference external" href="http://packages.python.org/distribute/">Python Distribute</a> 0.6.15 or higher. As noted above,
+you can verify if this package is installed by running <tt class="docutils literal"><span class="pre">easy_install</span> <span class="pre">--version</span></tt>. If it is not
+available, you can find installation instructions here: <a class="reference external" href="http://pypi.python.org/pypi/distribute#installation-instructions">http://pypi.python.org/pypi/distribute#installation-instructions</a>.
+Take into account that, although Python Distribute is included as an optional package in most
+Linux distributions, it is sometimes available under the name &#8220;Setuptools&#8221; (e.g., <tt class="docutils literal"><span class="pre">python-setuptools</span></tt>
+in Debian and Ubuntu systems), since Python Distribute is a fork of the Setuptools project.</li>
+</ul>
+<p>If you meet these prerequisites, you should be able to
+install FutureGrid PasswdStack simply by running this as <tt class="docutils literal"><span class="pre">root</span></tt>:</p>
+<div class="highlight-bash"><div class="highlight"><pre>easy_install -U futuregrid_passwdstack
+</pre></div>
+</div>
+<p>If you are using Ubuntu or Mac OS X, you will likely just need to run this:</p>
+<div class="highlight-bash"><div class="highlight"><pre>sudo easy_install -U futuregrid_passwdstack
+</pre></div>
+</div>
+<p>If you do not have administrative privileges on your machine, you will have to install FutureGrid PasswdStack
+under your regular user account:</p>
+<div class="highlight-bash"><div class="highlight"><pre>easy_install -U futuregrid_passwdstack --user
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Installing FutureGrid PasswdStack in your home directory will install the FutureGrid PasswdStack commands
+in <tt class="docutils literal"><span class="pre">~/.local/bin</span></tt>, which may not be in your PATH environment variable. If not, make sure to
+update the definition of your PATH environment variable (e.g., in the <tt class="docutils literal"><span class="pre">~/.profile</span></tt> file if
+you are using a BASH shell).</p>
+<p>Alternatively, you can also request that the commands be installed in a directory that is
+already in your $PATH. You may want to use <tt class="docutils literal"><span class="pre">~/bin/</span></tt>, as most Linux distributions will
+automatically include that directory in your PATH.</p>
+<div class="last highlight-bash"><div class="highlight"><pre>easy_install -U futuregrid_passwdstack  --user -s ~/bin/
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-pip">
+<h5>Using <tt class="docutils literal"><span class="pre">pip</span></tt><a class="headerlink" href="#using-pip" title="Permalink to this headline">¶</a></h5>
+<p><tt class="docutils literal"><span class="pre">pip</span></tt> is an alternative to <tt class="docutils literal"><span class="pre">easy_install</span></tt>. More information can be found in <a class="reference external" href="http://www.pip-installer.org/en/latest/index.html#">pip documentation</a>.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>pip install futuregrid_passwdstack
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="using-a-source-tarball">
+<span id="source-tarball"></span><h5>Using a source tarball<a class="headerlink" href="#using-a-source-tarball" title="Permalink to this headline">¶</a></h5>
+<p>If you do not have Python Distribute, or are unable to install it, you can still install FutureGrid PasswdStack
+by downloading a source tarball yourself. This tarball contains an installation script
+that will install and setup Python Distribute, and then proceed to install FutureGrid PasswdStack.</p>
+<p>You will first have to download the latest source tarball from the Python Package Index:
+<a class="reference external" href="http://pypi.python.org/pypi/futuregrid_passwdstack">http://pypi.python.org/pypi/futuregrid_passwdstack</a></p>
+<p>Next, untar the tarball and run the installation script as <tt class="docutils literal"><span class="pre">root</span></tt>:</p>
+<pre class="literal-block">
+tar xvzf futuregrid_passwdstack-0.1.tar.gz
+cd futuregrid_passwdstack-0.1
+python setup.py install
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If you are using Ubuntu or Mac OS X, you will likely just need to run this:</p>
+<div class="last highlight-bash"><div class="highlight"><pre>sudo python setup.py install
+</pre></div>
+</div>
+</div>
+<p>If you do not have administrative privileges on your machine, you can choose to install
+everything inside your home directory:</p>
+<div class="highlight-bash"><div class="highlight"><pre>python setup.py install --user
+</pre></div>
+</div>
+</div>
+<div class="section" id="tracking-latest-code-from-github">
+<span id="github-install"></span><h5>Tracking latest code from GitHub<a class="headerlink" href="#tracking-latest-code-from-github" title="Permalink to this headline">¶</a></h5>
+<p>If you want to use the latest version of our code from our GitHub repository, the steps
+are similar to installing a source tarball. However, instead of downloading a tarball, you
+will use git to clone our repository on your machine. Simply run the following:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git clone git@github.com:javidiaz/passwdstack.git
+</pre></div>
+</div>
+<p>This will create a directory called <tt class="docutils literal"><span class="pre">passwdstack</span></tt>. In it, you will find the same <tt class="docutils literal"><span class="pre">setup.py</span></tt>
+script described in the previous section. If you want to install FutureGrid PasswdStack, and not
+make any modifications to the code, you should run <tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt> as described
+in the previous section.</p>
+<p>If you intend to modify the code, and want the FutureGrid PasswdStack commands to use the code
+in the git repository you&#8217;ve created on your machine, you can instead install FutureGrid
+PasswdStack in &#8220;developer&#8221; mode:</p>
+<div class="highlight-bash"><div class="highlight"><pre>python setup.py develop
+</pre></div>
+</div>
+<p>This will install FutureGrid PasswdStack but, instead of copying the Python source code
+to a system directory, it will create a pointer to the source directory you checked out.
+That way, any changes you make to the source code will take effect immediately
+(without having to reinstall FutureGrid PasswdStack).</p>
+<p>Take into account that there are, at least, two branches in our GitHub repository: <tt class="docutils literal"><span class="pre">master</span></tt>
+and <tt class="docutils literal"><span class="pre">dev</span></tt>. The former always contains the latest stable release, including bug fixes, and
+the former contains the very latest version of our code (which may not work as reliably
+as the code in the <tt class="docutils literal"><span class="pre">master</span></tt> branch). By default, your repository will track the <tt class="docutils literal"><span class="pre">master</span></tt>
+branch. To switch to the <tt class="docutils literal"><span class="pre">dev</span></tt> branch, run the following:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git checkout dev
+</pre></div>
+</div>
+<p>To pull the latest changes from our GitHub repository, run the following:</p>
+<div class="highlight-bash"><div class="highlight"><pre>git pull origin
+</pre></div>
+</div>
+</div>
+</div>
+<span id="document-configure_futuregrid"></span><div class="section" id="setting-up-the-futuregrid-software-for-fg-passwdstack">
+<span id="chap-configure-futuregrid-passwdstack"></span><h4>Setting up the FutureGrid Software for FG PasswdStack<a class="headerlink" href="#setting-up-the-futuregrid-software-for-fg-passwdstack" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="configuration-files">
+<h5>Configuration Files<a class="headerlink" href="#configuration-files" title="Permalink to this headline">¶</a></h5>
+<p>There are two places where we can locate the configuration files. Our software will look into these places in the following order:</p>
+<ol class="arabic simple">
+<li>In the directory <tt class="docutils literal"><span class="pre">~/.fg/</span></tt></li>
+<li>In the directory <tt class="docutils literal"><span class="pre">/etc/futuregrid/</span></tt></li>
+</ol>
+<p>If you have installed FutureGrid PasswdStack using the tarball file (<a class="reference internal" href="index.html#source-tarball"><em>Using a source tarball</em></a>) you will find the configuration
+sample files in /etc/futuregrid/. Otherwise, you can download them as a <a class="reference external" href="futuregrid-docs-configsamples_0.1.tar.gz">tarball</a> or a <a class="reference external" href="futuregrid-docs-configsamples_0.1.zip">ZIP file</a>.</p>
+<p><strong>Server Side</strong>: The configuration file has to be renamed as <tt class="docutils literal"><span class="pre">fg-server.conf</span></tt>.</p>
+<p><strong>Client Side</strong>: The configuration file has to be renamed as <tt class="docutils literal"><span class="pre">fg-client.conf</span></tt>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you configure several clients or servers in the same machine, the <tt class="docutils literal"><span class="pre">fg-client.conf</span></tt> or <tt class="docutils literal"><span class="pre">fg-server.conf</span></tt> must be the same file.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the <strong>Client Side</strong>, the path of the log files must be relative to each users. Using the <tt class="docutils literal"><span class="pre">$HOME</span></tt> directory is a good idea.</p>
+</div>
+</div>
+<div class="section" id="setting-up-ldap">
+<h5>Setting up LDAP<a class="headerlink" href="#setting-up-ldap" title="Permalink to this headline">¶</a></h5>
+<p>The authentication of our software is based on LDAP. So, we need to configure some options in the configuration files to make it possible.</p>
+<div class="section" id="server-side">
+<h6>Server Side<a class="headerlink" href="#server-side" title="Permalink to this headline">¶</a></h6>
+<p>We need to configure the <tt class="docutils literal"><span class="pre">[LDAP]</span></tt> section. This is going to be use by all servers. More information about this section
+of the server configuration file can be found in <a class="reference internal" href="index.html#fg-server-ldap"><em>LDAP section</em></a>.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>LDAP<span class="o">]</span>
+<span class="nv">LDAPHOST</span><span class="o">=</span> ldap.futuregrid.org
+<span class="nv">LDAPUSER</span><span class="o">=</span> <span class="nv">uid</span><span class="o">=</span>rainadmin,ou<span class="o">=</span>People,dc<span class="o">=</span>futuregrid,dc<span class="o">=</span>org
+<span class="nv">LDAPPASS</span><span class="o">=</span> passwordrainadmin
+<span class="nv">log</span><span class="o">=</span> ~/fg-auth.log
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="setting-up-fg-passwdstack">
+<h5>Setting up FG PasswdStack<a class="headerlink" href="#setting-up-fg-passwdstack" title="Permalink to this headline">¶</a></h5>
+<p>In this section we explain how to configure FG PasswdStack.</p>
+<div class="section" id="passwdstack-config">
+<span id="id1"></span><h6>Server Side<a class="headerlink" href="#passwdstack-config" title="Permalink to this headline">¶</a></h6>
+<p>First, we are going to configure the main server. We need to configure the <tt class="docutils literal"><span class="pre">[PasswdStackServer]</span></tt> Section
+(see <a class="reference internal" href="index.html#fg-server-passwdstackserver"><em>PasswdStackServer section</em></a>).</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>PasswdStackServer<span class="o">]</span>
+<span class="nv">port</span> <span class="o">=</span> 56795
+<span class="nv">proc_max</span><span class="o">=</span>5
+<span class="nv">refresh</span><span class="o">=</span>20
+<span class="nv">log</span> <span class="o">=</span> passwdstackserver.log
+<span class="nv">log_level</span> <span class="o">=</span> debug
+<span class="nv">ca_cert</span><span class="o">=</span>/opt/futuregrid/futuregrid/etc/imdserver/cacert.pem
+<span class="nv">certfile</span><span class="o">=</span>/opt/futuregrid/futuregrid/etc/imdserver/imdscert.pem
+<span class="nv">keyfile</span><span class="o">=</span>/opt/futuregrid/futuregrid/etc/imdserver/privkey.pem
+</pre></div>
+</div>
+</div></blockquote>
+<p>Once everything is set up, you can start the server executing <tt class="docutils literal"><span class="pre">PasswdStackServer.py</span></tt> as <tt class="docutils literal"><span class="pre">imageman</span></tt> user.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We recommend to have a system user that run all the servers (i.e. imageman). In this way, it will be easier to manage the sudoers file when necessary.</p>
+</div>
+</div>
+<div class="section" id="client-side">
+<span id="passwdstack-client-conf"></span><h6>Client Side<a class="headerlink" href="#client-side" title="Permalink to this headline">¶</a></h6>
+<p>In the client side, we need to configure the <tt class="docutils literal"><span class="pre">[PasswdStack]</span></tt> section. More information
+about this section of the client configuration file can be found in <a class="reference internal" href="index.html#fg-client-passwdstack"><em>PasswdStack section</em></a>.</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="o">[</span>PasswdStack<span class="o">]</span>
+<span class="nv">port</span> <span class="o">=</span> 56796
+<span class="nv">serveraddr</span><span class="o">=</span>123.123.123.123
+<span class="nv">log</span> <span class="o">=</span> passwdstackclient.log
+<span class="nv">log_level</span> <span class="o">=</span> debug
+<span class="nv">ca_cert</span><span class="o">=</span>/etc/futuregrid/imdserver/cacert.pem
+<span class="nv">certfile</span><span class="o">=</span>/etc/futuregrid/imdserver/imdscert.pem
+<span class="nv">keyfile</span><span class="o">=</span>/etc/futuregrid/imdserver/privkey.pem
+</pre></div>
+</div>
+</div></blockquote>
+<p>The executable file of this client is <tt class="docutils literal"><span class="pre">fg-paswdstack</span></tt>. More information about how to use FG PasswdStack can be found
+in the <a class="reference internal" href="index.html#man-passwdstack"><em>FG PasswdStack Manual</em></a>.</p>
+</div>
+<div class="section" id="fg-passwdstack-check-list">
+<h6>FG PasswdStack Check List<a class="headerlink" href="#fg-passwdstack-check-list" title="Permalink to this headline">¶</a></h6>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="45%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">Server Side (<tt class="docutils literal"><span class="pre">fg-server.conf</span></tt>)</th>
+<th class="head">Client Side (<tt class="docutils literal"><span class="pre">fg-client.conf</span></tt>)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Requirement</strong></td>
+<td><ul class="first last simple">
+<li>LDAP client configured in the machine</li>
+</ul>
+</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><strong>Configure</strong></td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">[PasswdStackServer]</span></tt> section</li>
+<li><tt class="docutils literal"><span class="pre">[LDAP]</span></tt> section</li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">[PasswdStack]</span></tt> section</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><strong>Executables</strong></td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">PasswdStackServer.py</span></tt></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">fg-paswdstack</span></tt></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<span id="document-config_ref_index"></span><div class="section" id="configuration-file-reference">
+<span id="chap-config-ref"></span><h4>Configuration file reference<a class="headerlink" href="#configuration-file-reference" title="Permalink to this headline">¶</a></h4>
+<div class="toctree-wrapper compound">
+<span id="document-config_ref_server"></span><div class="section" id="fg-server-conf-configuration-file">
+<span id="sec-fg-server-conf"></span><h5><tt class="docutils literal"><span class="pre">fg-server.conf</span></tt> configuration file<a class="headerlink" href="#fg-server-conf-configuration-file" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="section-ldap">
+<span id="fg-server-ldap"></span><h6>Section <tt class="docutils literal"><span class="pre">[LDAP]</span></tt><a class="headerlink" href="#section-ldap" title="Permalink to this headline">¶</a></h6>
+<p>This section is used to configure the access to LDAP to verify the user passwords.</p>
+<p><em>This section is required by all services</em></p>
+<div class="section" id="option-ldaphost">
+<h7>Option <tt class="docutils literal"><span class="pre">LDAPHOST</span></tt><a class="headerlink" href="#option-ldaphost" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> String</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Hostname or IP address of the LDAP server that manages the user&#8217;s authentication.</p>
+</div>
+<div class="section" id="option-ldapuser">
+<h7>Option <tt class="docutils literal"><span class="pre">LDAPUSER</span></tt><a class="headerlink" href="#option-ldapuser" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> user-dn</p>
+<p><strong>Required:</strong> Yes</p>
+<p>This is the DN of an user that have read access to the encrypted passwords of every user. This looks
+like <tt class="docutils literal"><span class="pre">uid=USER,ou=People,dc=futuregrid,dc=org</span></tt></p>
+</div>
+<div class="section" id="option-ldappass">
+<h7>Option <tt class="docutils literal"><span class="pre">LDAPPASS</span></tt><a class="headerlink" href="#option-ldappass" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> String</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Password of the user specified in the previous section.</p>
+</div>
+<div class="section" id="option-log">
+<h7>Option <tt class="docutils literal"><span class="pre">log</span></tt><a class="headerlink" href="#option-log" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> log-file</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Location of the file where the logs will be stored.</p>
+</div>
+<div class="section" id="option-test">
+<h7>Option <tt class="docutils literal"><span class="pre">test</span></tt><a class="headerlink" href="#option-test" title="Permalink to this headline">¶</a></h7>
+<p><strong>Valid values:</strong> <tt class="docutils literal"><span class="pre">True</span></tt>, <tt class="docutils literal"><span class="pre">False</span></tt></p>
+<p><strong>Required:</strong> No</p>
+<p>This option is for development purposes. For security reasons, the LDAP server cannot be contacted from outside of FutureGrid network.
+Therefore, we need this option to go test our services before we deploy them on production.</p>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="section-passwdstackserver">
+<span id="fg-server-passwdstackserver"></span><h6>Section <tt class="docutils literal"><span class="pre">[PasswdStackServer]</span></tt><a class="headerlink" href="#section-passwdstackserver" title="Permalink to this headline">¶</a></h6>
+<p>This section is used to configure the FG Move Server.</p>
+<div class="section" id="option-port">
+<h7>Option <tt class="docutils literal"><span class="pre">port</span></tt><a class="headerlink" href="#option-port" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> Integer</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Port where the FG PasswdStack server will be listening.</p>
+</div>
+<div class="section" id="option-proc-max">
+<h7>Option <tt class="docutils literal"><span class="pre">proc_max</span></tt><a class="headerlink" href="#option-proc-max" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> Integer</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Maximum number of request that can be processed at the same time.</p>
+</div>
+<div class="section" id="option-refresh">
+<h7>Option <tt class="docutils literal"><span class="pre">refresh</span></tt><a class="headerlink" href="#option-refresh" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> Integer</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Interval to check the status of the running requests when <tt class="docutils literal"><span class="pre">proc_max</span></tt> is reached and determine if new request can be processed.</p>
+</div>
+<div class="section" id="id1">
+<h7>Option <tt class="docutils literal"><span class="pre">log</span></tt><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> log-file</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Location of the file where the logs will be stored.</p>
+</div>
+<div class="section" id="option-log-level">
+<h7>Option <tt class="docutils literal"><span class="pre">log_level</span></tt><a class="headerlink" href="#option-log-level" title="Permalink to this headline">¶</a></h7>
+<p><strong>Valid values:</strong> <tt class="docutils literal"><span class="pre">debug</span></tt>, <tt class="docutils literal"><span class="pre">error</span></tt>, <tt class="docutils literal"><span class="pre">warning</span></tt>, <tt class="docutils literal"><span class="pre">info</span></tt></p>
+<p><strong>Required:</strong> No</p>
+<p>Desired log level. The default option is <tt class="docutils literal"><span class="pre">debug</span></tt>.</p>
+</div>
+<div class="section" id="option-ca-cert">
+<h7>Option <tt class="docutils literal"><span class="pre">ca_cert</span></tt><a class="headerlink" href="#option-ca-cert" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> ca-cert</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Location of CA certificate (PEM-encoded) used to generate user and service certificates. Server certificates.</p>
+</div>
+<div class="section" id="option-certfile">
+<h7>Option <tt class="docutils literal"><span class="pre">certfile</span></tt><a class="headerlink" href="#option-certfile" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> service-cert</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Location of the certificate (PEM-encoded) used by the FG PasswdStack server. Server certificates.</p>
+</div>
+<div class="section" id="option-keyfile">
+<h7>Option <tt class="docutils literal"><span class="pre">keyfile</span></tt><a class="headerlink" href="#option-keyfile" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> key-cert</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Location of the private key (PEM-encoded) of the certificate specified in <tt class="docutils literal"><span class="pre">certfile</span></tt>. Server certificates.</p>
+</div>
+</div>
+</div>
+<span id="document-config_ref_client"></span><div class="section" id="fg-client-conf-configuration-file">
+<span id="sec-fg-client-conf"></span><h5><tt class="docutils literal"><span class="pre">fg-client.conf</span></tt> configuration file<a class="headerlink" href="#fg-client-conf-configuration-file" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="section-passwdstack">
+<span id="fg-client-passwdstack"></span><h6>Section <tt class="docutils literal"><span class="pre">[PasswdStack]</span></tt><a class="headerlink" href="#section-passwdstack" title="Permalink to this headline">¶</a></h6>
+<p>This section is used to configure FG PasswdStack.</p>
+<div class="section" id="option-port">
+<h7>Option <tt class="docutils literal"><span class="pre">port</span></tt><a class="headerlink" href="#option-port" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> Integer</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Port where the FG PasswdStack server will be listening.</p>
+</div>
+<div class="section" id="option-serveraddr">
+<h7>Option <tt class="docutils literal"><span class="pre">serveraddr</span></tt><a class="headerlink" href="#option-serveraddr" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> String</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Address of the machine where the FG PasswdStack server is running.</p>
+</div>
+<div class="section" id="option-log">
+<h7>Option <tt class="docutils literal"><span class="pre">log</span></tt><a class="headerlink" href="#option-log" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> log-file</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Location of the file where the logs will be stored.</p>
+</div>
+<div class="section" id="option-log-level">
+<h7>Option <tt class="docutils literal"><span class="pre">log_level</span></tt><a class="headerlink" href="#option-log-level" title="Permalink to this headline">¶</a></h7>
+<p><strong>Valid values:</strong> <tt class="docutils literal"><span class="pre">debug</span></tt>,``error``,``warning``,``info``</p>
+<p><strong>Required:</strong> No</p>
+<p>Desired log level. The default option is <tt class="docutils literal"><span class="pre">debug</span></tt>.</p>
+</div>
+<div class="section" id="option-ca-cert">
+<h7>Option <tt class="docutils literal"><span class="pre">ca_cert</span></tt><a class="headerlink" href="#option-ca-cert" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> ca-cert</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Location of CA certificate (PEM-encoded) used to generate user and service certificates.</p>
+</div>
+<div class="section" id="option-certfile">
+<h7>Option <tt class="docutils literal"><span class="pre">certfile</span></tt><a class="headerlink" href="#option-certfile" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> service-cert</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Location of the certificate (PEM-encoded) used by the FG PasswdStack client.</p>
+</div>
+<div class="section" id="option-keyfile">
+<h7>Option <tt class="docutils literal"><span class="pre">keyfile</span></tt><a class="headerlink" href="#option-keyfile" title="Permalink to this headline">¶</a></h7>
+<p><strong>Type:</strong> key-cert</p>
+<p><strong>Required:</strong> Yes</p>
+<p>Location of the private key (PEM-encoded) of the certificate specified in <tt class="docutils literal"><span class="pre">certfile</span></tt>.</p>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-modules_india"></span><div class="section" id="configuring-a-module-for-futuregrid-software">
+<span id="modules-india"></span><h4>Configuring a Module for FutureGrid Software<a class="headerlink" href="#configuring-a-module-for-futuregrid-software" title="Permalink to this headline">¶</a></h4>
+<p>The software packages on the FutureGrid machines is manage using the <a class="reference external" href="http://modules.sourceforge.net/">Environment Modules</a>.
+The Environment Modules package provides for the dynamic modification of a user&#8217;s environment via modulefiles.</p>
+<p>In this section, we explain how to create a module for our software.</p>
+<ol class="arabic">
+<li><p class="first">Create a directory to place the software <tt class="docutils literal"><span class="pre">/N/soft/futuregrid-1.0/</span></tt>.</p>
+</li>
+<li><p class="first">Locate the directory where Modules is installed. In the case of India, this is installed in <tt class="docutils literal"><span class="pre">/opt/Modules/</span></tt>. From now on
+we will refer to this location as <tt class="docutils literal"><span class="pre">$MODULES_PATH</span></tt>.</p>
+</li>
+<li><p class="first">Create a directory in <tt class="docutils literal"><span class="pre">$MODULES_PATH/default/modulefiles/tools/futuregrid</span></tt></p>
+</li>
+<li><p class="first">In this directory we need to create a file with the version number. In this example the file is named 1.0. The content of this file
+is some information about the software location and the list of modules that need to be loaded as requirements.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c">#%Module1.0#########################################################</span>
+
+<span class="nb">set </span>ver 1.0
+<span class="nb">set </span>path /N/soft/futuregrid-<span class="nv">$ver</span>
+
+proc ModulesHelp <span class="o">{</span> <span class="o">}</span> <span class="o">{</span>
+puts stderr <span class="s2">&quot;This module adds the FutureGrid toolkit to your environment&quot;</span>
+<span class="o">}</span>
+
+module-whatis <span class="s2">&quot;Configures your environment for the FutureGrid toolkit&quot;</span>
+
+prepend-path PATH <span class="nv">$path</span>
+prepend-path PATH <span class="nv">$path</span>/bin/
+
+<span class="k">if</span> <span class="o">[</span> module-info mode load <span class="o">]</span> <span class="o">{</span>
+puts stderr <span class="s2">&quot;futuregrid version $ver loaded&quot;</span>
+<span class="o">}</span>
+
+<span class="k">if</span> <span class="o">[</span> module-info mode switch2 <span class="o">]</span> <span class="o">{</span>
+puts stderr <span class="s2">&quot;futuregrid version $ver loaded&quot;</span>
+<span class="o">}</span>
+
+<span class="k">if</span> <span class="o">[</span> module-info mode remove <span class="o">]</span> <span class="o">{</span>
+puts stderr <span class="s2">&quot;futuregrid version $ver unloaded&quot;</span>
+<span class="o">}</span>
+
+module load euca2ools
+module load python_w-cmd2
+module load moab
+module load torque
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the python is not the one installed in the system, the binaries may be inside your python directory.</p>
+</div>
+<ol class="arabic simple">
+<li>In case the software binaries were copied into <tt class="docutils literal"><span class="pre">/usr/bin</span></tt> or <tt class="docutils literal"><span class="pre">/usr/local/bin</span></tt>. We need to move them to the directory
+<tt class="docutils literal"><span class="pre">/N/soft/futuregrid-1.0/bin/</span></tt></li>
+</ol>
+</div>
+<span id="document-build_doc"></span><div class="section" id="building-the-fg-passwdstack-documentation">
+<span id="build-doc"></span><h4>Building the FG PasswdStack Documentation<a class="headerlink" href="#building-the-fg-passwdstack-documentation" title="Permalink to this headline">¶</a></h4>
+<p>The documentation has been created using <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> and therefore you have to build it before you can see the final html files. The source
+files of the documentation can be found under the <tt class="docutils literal"><span class="pre">doc</span></tt> directory of our software package. Next, we define the needed steps to build the documentation.</p>
+<ol class="arabic">
+<li><p class="first">Install the documentation <a class="reference internal" href="index.html#source-tarball"><em>Using a source tarball</em></a> or <a class="reference internal" href="index.html#github-install"><em>Downloading the latest code from GitHub</em></a>.</p>
+</li>
+<li><p class="first">Change your current directory to the <tt class="docutils literal"><span class="pre">doc</span></tt> one.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd </span>doc
+</pre></div>
+</div>
+</li>
+<li><p class="first">Build the documentation using the Makefile.</p>
+<div class="highlight-bash"><div class="highlight"><pre>make website
+</pre></div>
+</div>
+</li>
+<li><p class="first">The documentation should be in the directory <tt class="docutils literal"><span class="pre">build/web-&lt;version&gt;/</span></tt>. This basically contains html files that can be copied to a regular http server.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="others">
+<h3>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<span id="document-changelog"></span><div class="section" id="changelog-and-release-notes">
+<span id="changelogs"></span><h4>Changelog and Release Notes<a class="headerlink" href="#changelog-and-release-notes" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id1">
+<h5>0.1<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<p>Summary of the main functionality provided for this version:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>Security</dt>
+<dd><ul class="first last simple">
+<li>Authentication is performed using the FutureGrid LDAP server</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Change the OpenStack password for an user by executing the command keystone user-password-update</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span id="document-download"></span><span class="target" id="downloads"></span><div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<p>The latest version of the FutureGrid PasswdStack is 0.1</p>
+<p>The recommended way of installing Move is using <tt class="docutils literal"><span class="pre">easy_install</span></tt>. You can find instructions on how to do this in the
+<a class="reference internal" href="index.html#chap-install-futuregrid"><em>Installation</em></a> chapter of the documentation.</p>
+<p>If you do need to download FG Move as an installable Python Egg or as a source
+tarball, both are available for download in the Python Package Index: <a class="reference external" href="http://pypi.python.org/pypi/futuregrid_passwdstack">http://pypi.python.org/pypi/futuregrid_passwdstack</a></p>
+<div class="section" id="sample-files">
+<h3>Sample files<a class="headerlink" href="#sample-files" title="Permalink to this headline">¶</a></h3>
+<p>The sample configuration files shown in the documentation are available for download as a
+<a class="reference external" href="futuregrid-docs-configsamples_0.1.tar.gz">tarball</a> or a <a class="reference external" href="futuregrid-docs-configsamples_0.1.zip">ZIP file</a>.</p>
+</div>
+<div class="section" id="development-version">
+<h3>Development version<a class="headerlink" href="#development-version" title="Permalink to this headline">¶</a></h3>
+<p>If you want to use the latest development version of FG Move, you can
+track our <a class="reference external" href="https://github.com/javidiaz/passwdstack">GitHub repository</a>.</p>
+<p>The <a class="reference internal" href="index.html#chap-install-futuregrid"><em>Installation</em></a> chapter of the documentation provides
+instructions on how to check out our code from GitHub.</p>
+</div>
+</div>
+<span id="document-support"></span><div class="section" id="support">
+<span id="id1"></span><h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
+<p>If you run into problems when using FutureGrid PasswordStack, please use our
+help form at <a class="reference external" href="https://portal.futuregrid.org/help">https://portal.futuregrid.org/help</a></p>
+</div>
+<div class="section" id="known-problems">
+<h2>Known problems<a class="headerlink" href="#known-problems" title="Permalink to this headline">¶</a></h2>
+<p>Depending of the configuration of your machines, you may have problems installing some python modules. In particular, we have notice problems
+with the ldap modules, which is required for the installation of our software.</p>
+<ul>
+<li><p class="first">Installing python-ldap</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>Ldap api
+sudo apt-get install python-ldap
+or
+sudo yum install python-ldap
+or
+sudo yum install python26-ldap  <span class="c">#(when the default python is the 2.4 version)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33833781-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html#document-index">Home</a>|&nbsp;</li>
+        <li><a href="index.html#document-quickstart">Quickstart</a>|&nbsp;</li>
+        <li><a href="index.html#document-documentation">Documentation</a>|&nbsp;</li>
+        <li><a href="index.html#document-download">Download</a>|&nbsp;</li>
+        <li><a href="index.html#document-support">Support</a>|&nbsp;</li>
+        <li><a href="http://futuregrid.github.com/doc/">Dev</a>|&nbsp;</li>
+        <li><a href="https://portal.futuregrid.org/">Portal</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Javier Diaz, Fugang Wang, Koji Tanaka, Gregor von Laszewski.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
